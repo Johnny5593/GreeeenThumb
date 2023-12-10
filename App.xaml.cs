@@ -20,6 +20,7 @@ namespace GreeeenThumb
 
                 var newPlant = new Plant { PlantName = "Rose" };
                 plantRepository.Add(newPlant);
+                unitOfWork.SaveChanges();
             }
 
             var mainWindow = new MainWindow();

@@ -26,6 +26,18 @@ namespace GreenThumb
         public int UserId { get; set; }
         public string Username { get; set; }
         public string PasswordHash { get; set; }
+        public bool IsUsernameTaken(string username)
+        {
+            return Users.Any(u => u.Username == username);
+        }
+
+        private List<User> Users = new List<User>();
+
+        public void AddUser(User user)
+        {
+            Console.WriteLine("User in GreenThumb", user);
+            Users.Add(user);
+        }
     }
 }
 
