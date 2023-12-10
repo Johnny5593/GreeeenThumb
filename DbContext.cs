@@ -18,6 +18,8 @@ public class YourDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<Plant>()
             .HasMany(p => p.FollowingInstructions)
             .WithOne(i => i.Plant)

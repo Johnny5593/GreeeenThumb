@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using GreenThumb;
+using Microsoft.EntityFrameworkCore;
 using System.Windows;
 
 namespace GreeeenThumb
@@ -9,13 +10,18 @@ namespace GreeeenThumb
         {
             base.OnStartup(e);
 
-            // Skapa eller migrera databasen när applikationen startar
             using (var context = new YourDbContext())
             {
                 context.Database.Migrate();
+
+                var plantRepository = new Repository<Plant>(context);
+                var unitOfWork = new UnitOfWork(context);
+                var greenThumbRepository = new Repository<Plant>(context);
+
+                var newPlant = new Plant { PlantName = "Rose" };
+                plantRepository.Add(newPlant);
             }
 
-            // Fortsätt med att starta huvudfönstret eller något annat i din applikation
             var mainWindow = new MainWindow();
             mainWindow.Show();
         }
