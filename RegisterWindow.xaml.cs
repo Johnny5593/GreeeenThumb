@@ -1,10 +1,8 @@
 ﻿using GreenThumb;
-using System.Collections.Generic;
 using System;
 using System.Windows;
 
-
-namespace travelpal
+namespace greenthumb
 {
     public partial class RegisterWindow : Window
     {
@@ -14,7 +12,6 @@ namespace travelpal
         {
             InitializeComponent();
             greenThumbManager = manager;
-
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
@@ -29,7 +26,6 @@ namespace travelpal
             }
             else
             {
-                // Skapa en ny användare utan att lägga till default travels
                 User newUser = new User { Username = username, PasswordHash = password };
                 greenThumbManager.AddUser(newUser);
 
@@ -39,6 +35,4 @@ namespace travelpal
             }
         }
     }
-
-
 }
